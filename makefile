@@ -1,0 +1,2 @@
+all:
+	g++ -I src/include -L src/lib -o main main.cpp Game.cpp tools/TextureManager.cpp  tools/Vector2.cpp tools/visuals/Button.cpp tools/visuals/Sprite.cpp tools/visuals/Animation.cpp entitys/Entity.cpp entitys/player/Pingo.cpp scenes/Scene.cpp scenes/Menu.cpp scenes/menus/MainMenu.cpp -lmingw32 -lSDL2main -lSDL2_image -lSDL2_ttf -lSDL2
