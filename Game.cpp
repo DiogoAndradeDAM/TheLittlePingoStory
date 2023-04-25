@@ -10,6 +10,7 @@ int Game::Fps;
 
 Pingo* pingo = nullptr;
 MainMenu* menu = nullptr;
+EScenes Game::currentScene = SCENE_NONE;
 
 Game::Game(const char* title, int x, int y, int width, int height, int fps)
 : x(x), y(y), width(width), height(height)
@@ -30,6 +31,7 @@ Game::Game(const char* title, int x, int y, int width, int height, int fps)
         pingo = new Pingo("assets/images/pingoSpriteSheet_move.png", 200, 200, 0.f, 4, 100, 0);
         menu = new MainMenu(SDL_Color{255,255,255,0});
 
+        Game::currentScene = SCENE_MAINMENU;
 
         this->gameRunning = true;
     }else{
@@ -54,21 +56,42 @@ void Game::handleEvent()
         case SDL_QUIT: this->gameRunning = false; break;    
         default: break;
     }
+    if(Game::currentScene == SCENE_MAINMENU)
+    {
+        if(Game::Event.type == SDL_KEYDOWN)
+        {
+            if(Game::Event.key.keysym.sym == SDLK_q){
+                Game::currentScene = SCENE_MAINGAME;
+            }
+        }
+    }
 
 }
 
 void Game::update()
 {
-    pingo->update();
-    menu->update();
+    if(Game::currentScene == SCENE_MAINMENU)
+    {
+        menu->update();
+    }
+    else if(Game::currentScene == SCENE_MAINGAME)
+    {
+        pingo->update();
+    }
 }
 
 void Game::render()
 {
     SDL_RenderClear(Game::Renderer);
 
-    pingo->drawAnimation();
-    menu->render();
+    if(Game::currentScene == SCENE_MAINMENU)
+    {
+        menu->render();
+    }
+    else if(Game::currentScene == SCENE_MAINGAME)
+    {
+        pingo->drawAnimation();
+    }
 
     SDL_RenderPresent(Game::Renderer);
 }

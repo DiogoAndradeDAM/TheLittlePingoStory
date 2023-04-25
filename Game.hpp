@@ -5,6 +5,12 @@
 #include <SDL2\SDL_ttf.h>
 #include <iostream>
 
+enum EScenes
+{
+    SCENE_NONE,
+    SCENE_MAINMENU,
+    SCENE_MAINGAME,
+};
 
 class Game
 {
@@ -23,6 +29,7 @@ class Game
     static SDL_Renderer* Renderer;
     static int Fps;
     static SDL_Event Event;
+    static EScenes currentScene;
     private:
 
     SDL_Window* window;
