@@ -16,4 +16,8 @@ public:
 protected:
     std::vector<Button*> options;
     virtual void setOptions()=0;
+    void handleEvents();//Movimenta o indice
+    void selectButton();//Baseado no indice, mostra qual botão está selecionado no momento
+    virtual void action()=0;//Baseado no indicem chama a funcionalidade dos botões
+    int indexButton;
 };

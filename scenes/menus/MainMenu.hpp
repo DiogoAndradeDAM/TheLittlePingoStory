@@ -14,4 +14,5 @@ public:
     void render() override;
 private:
     void setOptions() override;
+    void action() override;
 };

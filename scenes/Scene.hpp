@@ -12,4 +12,6 @@ public:
     virtual void render()=0;
 protected:
     SDL_Color bgColor;
+    virtual void handleEvents()=0;
+
 };

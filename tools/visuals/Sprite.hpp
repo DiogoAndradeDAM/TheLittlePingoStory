@@ -18,6 +18,7 @@ public:
     void move(int x, int y);
     void flipW();
     void flipNone();
+    SDL_Texture* getTexture(){return this->texture;}
 protected:
     Vector2 vec;
     int wsrc=16, hsrc=16, wdest, hdest;

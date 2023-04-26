@@ -24,16 +24,16 @@ class Game
     void run();
     void setFPS(Uint8 frameStart);
 
-    bool isRunning(){return this->gameRunning;}
+    bool isRunning(){return gameRunning;}
 
     static SDL_Renderer* Renderer;
     static int Fps;
     static SDL_Event Event;
     static EScenes currentScene;
+    static bool gameRunning;
     private:
 
     SDL_Window* window;
     int x, y, width, height;
-    bool gameRunning;
 
 };

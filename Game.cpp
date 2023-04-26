@@ -7,6 +7,7 @@ SDL_Window* window = nullptr;
 SDL_Renderer* Game::Renderer = nullptr;
 SDL_Event Game::Event;
 int Game::Fps;
+bool Game::gameRunning;
 
 Pingo* pingo = nullptr;
 MainMenu* menu = nullptr;
@@ -33,9 +34,9 @@ Game::Game(const char* title, int x, int y, int width, int height, int fps)
 
         Game::currentScene = SCENE_MAINMENU;
 
-        this->gameRunning = true;
+        Game::gameRunning = true;
     }else{
-        this->gameRunning = false;
+        Game::gameRunning = false;
     }
 }
 
@@ -53,7 +54,7 @@ void Game::handleEvent()
     
     switch(Game::Event.type)
     {
-        case SDL_QUIT: this->gameRunning = false; break;    
+        case SDL_QUIT: Game::gameRunning = false; break;    
         default: break;
     }
     if(Game::currentScene == SCENE_MAINMENU)

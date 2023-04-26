@@ -22,7 +22,7 @@ MainMenu::~MainMenu()
 
 void MainMenu::update()
 {
-
+    this->handleEvents();
 }
 
 void MainMenu::render()
@@ -31,6 +31,7 @@ void MainMenu::render()
     for(auto button : this->options){
         button->draw();
     }
+    this->selectButton();
 }
 
 void MainMenu::setOptions()
@@ -40,4 +41,9 @@ void MainMenu::setOptions()
     this->options.push_back(new Button("assets/fonts/retroGaming.ttf", "Settings", BUTTONPOS_CENTERED_WIDTH, 0, 600, 32, SDL_Color{0,0,255,0}));
     this->options.push_back(new Button("assets/fonts/retroGaming.ttf", "Credits", BUTTONPOS_CENTERED_WIDTH, 0, 650, 32, SDL_Color{0,0,255,0}));
     this->options.push_back(new Button("assets/fonts/retroGaming.ttf", "Quit", BUTTONPOS_CENTERED_WIDTH, 0, 700, 32, SDL_Color{0,0,255,0}));
+}
+
+void MainMenu::action()
+{
+
 }
