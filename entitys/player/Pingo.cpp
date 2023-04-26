@@ -20,7 +20,6 @@ Pingo::~Pingo()
 void Pingo::update()
 {
     this->handleInputs();
-    this->clamp();
 }
 
 void Pingo::handleInputs()

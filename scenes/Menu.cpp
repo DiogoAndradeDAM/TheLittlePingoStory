@@ -37,8 +37,8 @@ void Menu::selectButton()
     int width=0, height=0;
     SDL_QueryTexture(this->options.at(this->indexButton)->getTexture(), NULL, NULL, &width, &height);
 
-    SDL_Rect selectionRect1{vec.x-50, vec.y+12, 32,8};
-    SDL_Rect selectionRect2{(vec.x+width)+30, vec.y+12, 32,8};
+    SDL_Rect selectionRect1{vec.x-50, vec.y+16, 32,8};
+    SDL_Rect selectionRect2{(vec.x+width)+25, vec.y+16, 32,8};
 
     SDL_SetRenderDrawColor(Game::Renderer, this->textColor.r, this->textColor.g, this->textColor.b, this->textColor.a);
     SDL_RenderFillRect(Game::Renderer, &selectionRect1);

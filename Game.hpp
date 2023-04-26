@@ -12,6 +12,7 @@ enum EScenes
     SCENE_CREDITS,
     SCENE_SETTINGS,
     SCENE_MAINGAME,
+    SCENE_MAINGAME2,
 };
 
 class Game

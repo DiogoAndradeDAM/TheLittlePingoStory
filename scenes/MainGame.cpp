@@ -10,10 +10,10 @@ MainGame::MainGame()
     
 }
 
-MainGame::MainGame(SDL_Color bgColor)
+MainGame::MainGame(SDL_Color bgColor, Vector2 playerPosition)
 :Scene(bgColor)
 {
-    pingo = new Pingo("assets/images/pingoSpriteSheet_move.png", 200, 200, 0.f, 4, 100, 0);
+    pingo = new Pingo("assets/images/pingoSpriteSheet_move.png", playerPosition.x, playerPosition.y, 0.f, 4, 100, 0);
 
 }
 

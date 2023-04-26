@@ -2,6 +2,7 @@
 #include "tools/visuals/Animation.hpp"
 #include "scenes/MainGame.hpp"
 #include "scenes/menus/MainMenu.hpp"
+#include "tools/Vector2.hpp"
 
 SDL_Window* window = nullptr;
 SDL_Renderer* Game::Renderer = nullptr;
@@ -29,8 +30,11 @@ Game::Game(const char* title, int x, int y, int width, int height, int fps)
 
         Game::Fps = fps;
 
+        Vector2 vec1{200, 200};
+        Vector2 vec2{900, 350};
+
         mainMenu = new MainMenu(SDL_Color{255,255,255,0}, SDL_Color{0,0,255,0});
-        mainGame = new MainGame(SDL_Color{255,255,255,0});
+        mainGame = new MainGame(SDL_Color{255,255,255,0}, vec1);
 
         Game::currentScene = SCENE_MAINMENU;
 

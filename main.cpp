@@ -3,7 +3,7 @@
 
 #include "Game.hpp"
 
-const int WINDOW_WIDTH = 1024, WINDOW_HEIGHT = 768;
+const int WINDOW_WIDTH = 960, WINDOW_HEIGHT = 768;
 const int FPS = 60;
 
 Game* game = nullptr;
