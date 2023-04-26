@@ -6,8 +6,8 @@ MainMenu::MainMenu()
     this->setOptions();
 }
 
-MainMenu::MainMenu(SDL_Color bgColor)
-: Menu(bgColor)
+MainMenu::MainMenu(SDL_Color bgColor, SDL_Color textColor)
+: Menu(bgColor, textColor)
 {
     this->setOptions();
     
@@ -23,6 +23,7 @@ MainMenu::~MainMenu()
 void MainMenu::update()
 {
     this->handleEvents();
+    this->action();
 }
 
 void MainMenu::render()
@@ -45,5 +46,20 @@ void MainMenu::setOptions()
 
 void MainMenu::action()
 {
+    if(Game::Event.type == SDL_KEYDOWN)
+    {
+        if(Game::Event.key.keysym.sym == SDLK_e)
+        {
+            switch(this->indexButton)
+            {
+                case 0: Game::currentScene = SCENE_MAINGAME; break;
+                case 1: Game::currentScene = SCENE_MAINGAME; break;
+                case 2: Game::currentScene = SCENE_SETTINGS; break;
+                case 3: Game::currentScene = SCENE_CREDITS; break;
+                case 4: Game::gameRunning = false; break;
+            }
+        }
+    }
+
 
 }

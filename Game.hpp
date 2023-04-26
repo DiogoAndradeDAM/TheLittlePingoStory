@@ -9,6 +9,8 @@ enum EScenes
 {
     SCENE_NONE,
     SCENE_MAINMENU,
+    SCENE_CREDITS,
+    SCENE_SETTINGS,
     SCENE_MAINGAME,
 };
 

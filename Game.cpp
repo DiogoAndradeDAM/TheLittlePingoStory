@@ -1,6 +1,6 @@
 #include "Game.hpp"
 #include "tools/visuals/Animation.hpp"
-#include "entitys/player/Pingo.hpp"
+#include "scenes/MainGame.hpp"
 #include "scenes/menus/MainMenu.hpp"
 
 SDL_Window* window = nullptr;
@@ -9,8 +9,8 @@ SDL_Event Game::Event;
 int Game::Fps;
 bool Game::gameRunning;
 
-Pingo* pingo = nullptr;
-MainMenu* menu = nullptr;
+MainMenu* mainMenu = nullptr;
+MainGame* mainGame = nullptr;
 EScenes Game::currentScene = SCENE_NONE;
 
 Game::Game(const char* title, int x, int y, int width, int height, int fps)
@@ -29,8 +29,8 @@ Game::Game(const char* title, int x, int y, int width, int height, int fps)
 
         Game::Fps = fps;
 
-        pingo = new Pingo("assets/images/pingoSpriteSheet_move.png", 200, 200, 0.f, 4, 100, 0);
-        menu = new MainMenu(SDL_Color{255,255,255,0});
+        mainMenu = new MainMenu(SDL_Color{255,255,255,0}, SDL_Color{0,0,255,0});
+        mainGame = new MainGame(SDL_Color{255,255,255,0});
 
         Game::currentScene = SCENE_MAINMENU;
 
@@ -42,6 +42,8 @@ Game::Game(const char* title, int x, int y, int width, int height, int fps)
 
 Game::~Game()
 {
+    delete mainMenu;
+
     SDL_DestroyWindow(this->window);
     SDL_DestroyRenderer(Game::Renderer);
     TTF_Quit();
@@ -57,15 +59,6 @@ void Game::handleEvent()
         case SDL_QUIT: Game::gameRunning = false; break;    
         default: break;
     }
-    if(Game::currentScene == SCENE_MAINMENU)
-    {
-        if(Game::Event.type == SDL_KEYDOWN)
-        {
-            if(Game::Event.key.keysym.sym == SDLK_q){
-                Game::currentScene = SCENE_MAINGAME;
-            }
-        }
-    }
 
 }
 
@@ -73,11 +66,11 @@ void Game::update()
 {
     if(Game::currentScene == SCENE_MAINMENU)
     {
-        menu->update();
+        mainMenu->update();
     }
     else if(Game::currentScene == SCENE_MAINGAME)
     {
-        pingo->update();
+        mainGame->update();
     }
 }
 
@@ -87,11 +80,11 @@ void Game::render()
 
     if(Game::currentScene == SCENE_MAINMENU)
     {
-        menu->render();
+        mainMenu->render();
     }
     else if(Game::currentScene == SCENE_MAINGAME)
     {
-        pingo->drawAnimation();
+        mainGame->render();
     }
 
     SDL_RenderPresent(Game::Renderer);
